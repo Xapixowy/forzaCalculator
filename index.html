@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>HokiHoshi's Forza Calculator</title>
+      <link rel="preconnect" href="https://fonts.gstatic.com" />
+      <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;400;700&display=swap" rel="stylesheet" />
+      <link rel="stylesheet" href="css/style.css" />
+   </head>
+   <body>
+      <header>HokiHoshi's Forza Calculator</header>
+      <main>
+         <form>
+            <label
+               >Front weight:
+               <input
+                  name="frontWeight"
+                  type="number"
+                  min="1"
+                  max="99"
+                  size="2"
+                  maxlength="2"
+                  placeholder="50"
+               />%</label
+            >
+            <label
+               >Rebound stiffness - min value:
+               <input name="reboundStiffMin" type="number" min="1" max="99" size="2" maxlength="2" placeholder="50"
+            /></label>
+            <label
+               >Rebound stiffness - max value:
+               <input name="reboundStiffMax" type="number" min="1" max="99" size="2" maxlength="2" placeholder="50"
+            /></label>
+            <label
+               >Springs - min value:
+               <input name="springsMin" type="number" min="1" max="99" size="2" maxlength="2" placeholder="50"
+            /></label>
+            <label
+               >Springs - max value:
+               <input name="springsMax" type="number" min="1" max="99" size="2" maxlength="2" placeholder="50"
+            /></label>
+            <label
+               >Anti-roll bars - min value:
+               <input name="antirollBarMin" type="number" min="1" max="99" size="2" maxlength="2" placeholder="50"
+            /></label>
+            <label
+               >Anti-roll bars - max value:
+               <input name="antirollBarMax" type="number" min="1" max="99" size="2" maxlength="2" placeholder="50"
+            /></label>
+            <button type="button">Calculate</button>
+         </form>
+      </main>
+      <aside>
+         <ul>
+            <li>
+               Differential
+               <ul>
+                  <li>
+                     Front
+                     <ul>
+                        <li>
+                           Acceleration: <span>25% -> 50% <span>(too high value causes understeer)</span></span>
+                        </li>
+                        <li>Deceleration: <span>0%</span></li>
+                     </ul>
+                  </li>
+                  <li>
+                     Rear
+                     <ul>
+                        <li>
+                           Acceleration: <span>40% -> 50% <span>(too high value causes oversteer)</span></span>
+                        </li>
+                        <li>Deceleration: <span>0%</span></li>
+                     </ul>
+                  </li>
+                  <li>
+                     Center
+                     <ul>
+                        <li>
+                           Balance: <span>70% -> 90% <span>(available when AWD)</span></span>
+                        </li>
+                     </ul>
+                  </li>
+               </ul>
+            </li>
+            <li>
+               Brake
+               <ul>
+                  <li>
+                     Breaking Force
+                     <ul>
+                        <li>
+                           Pressure: <span>100% <span>(higher values might be unstable)</span></span>
+                        </li>
+                     </ul>
+                  </li>
+               </ul>
+            </li>
+            <li>
+               Aero
+               <ul>
+                  <li>
+                     Downforce
+                     <ul>
+                        <li>Front: <span>75% cornering</span></li>
+                        <li>Rear: <span>Max cornering</span></li>
+                     </ul>
+                  </li>
+               </ul>
+            </li>
+            <li>
+               Damping
+               <ul>
+                  <li>
+                     Rebound stiffness
+                     <ul>
+                        <li>Front: <span id="reboundStiffFront"></span></li>
+                        <li>Rear: <span id="reboundStiffRear"></span></li>
+                     </ul>
+                  </li>
+                  <li>
+                     Bump stiffness
+                     <ul>
+                        <li>Front: <span id="bumpStiffFront"></span></li>
+                        <li>Rear: <span id="bumpStiffRear"></span></li>
+                     </ul>
+                  </li>
+               </ul>
+            </li>
+            <li>
+               Springs
+               <ul>
+                  <li>
+                     Springs
+                     <ul>
+                        <li>Front: <span id="springsFront"></span></li>
+                        <li>Rear: <span id="springsRear"></span></li>
+                     </ul>
+                  </li>
+                  <li>
+                     Ride height
+                     <ul>
+                        <li>Front: <span>1 tick from lowest value</span></li>
+                        <li>Rear: <span>1 tick from lowest value</span></li>
+                     </ul>
+                  </li>
+               </ul>
+            </li>
+            <li>
+               Anti-roll bars
+               <ul>
+                  <li>
+                     Anti-roll bars
+                     <ul>
+                        <li>Front: <span id="antirollBarFront"></span></li>
+                        <li>Rear: <span id="antirollBarRear"></span></li>
+                     </ul>
+                  </li>
+               </ul>
+            </li>
+         </ul>
+      </aside>
+      <footer>&copy Xapixowy 2021</footer>
+      <script src="js/script.js"></script>
+   </body>
+</html>

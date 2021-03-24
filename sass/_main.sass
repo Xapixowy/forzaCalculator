@@ -1,0 +1,29 @@
+main, aside
+   position: absolute
+   top: $header-height
+   left: 0
+   width: 100%
+   height: calc(100vh - #{$header-height} - #{$footer-height})
+   padding: 30px
+   form
+      display: flex
+      flex-direction: column
+      label
+         margin: 15px 0
+      button
+         align-self: flex-start
+         padding: 10px 25px
+aside
+   left: 100%
+   width: 50%
+   transition: .5s
+   &.opened
+      left: 50%
+   ul
+      list-style: none
+      ul > li
+         margin-left: 30px
+   span
+      font-weight: bold
+      span
+         font-weight: 200
