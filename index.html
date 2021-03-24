@@ -12,155 +12,117 @@
    <body>
       <header>HokiHoshi's Forza Calculator</header>
       <main>
-         <form>
-            <label
-               >Front weight:
-               <input
-                  name="frontWeight"
-                  type="number"
-                  min="1"
-                  max="99"
-                  size="2"
-                  maxlength="2"
-                  placeholder="50"
-               />%</label
-            >
-            <label
-               >Rebound stiffness - min value:
-               <input name="reboundStiffMin" type="number" min="1" max="99" size="2" maxlength="2" placeholder="50"
-            /></label>
-            <label
-               >Rebound stiffness - max value:
-               <input name="reboundStiffMax" type="number" min="1" max="99" size="2" maxlength="2" placeholder="50"
-            /></label>
-            <label
-               >Springs - min value:
-               <input name="springsMin" type="number" min="1" max="99" size="2" maxlength="2" placeholder="50"
-            /></label>
-            <label
-               >Springs - max value:
-               <input name="springsMax" type="number" min="1" max="99" size="2" maxlength="2" placeholder="50"
-            /></label>
-            <label
-               >Anti-roll bars - min value:
-               <input name="antirollBarMin" type="number" min="1" max="99" size="2" maxlength="2" placeholder="50"
-            /></label>
-            <label
-               >Anti-roll bars - max value:
-               <input name="antirollBarMax" type="number" min="1" max="99" size="2" maxlength="2" placeholder="50"
-            /></label>
-            <button type="button">Calculate</button>
-         </form>
+         <h1>Car information</h1>
+         <p>
+            Drivetrain:
+            <select name="drivetrain">
+               <option value="fwd">FWD</option>
+               <option value="rwd" selected>RWD</option>
+               <option value="awd">AWD</option>
+            </select>
+         </p>
+         <p>Aero: <input type="checkbox" name="aero" /></p>
+         <p>
+            Front weight:
+            <input name="frontWeight" type="number" min="1" max="99" size="2" maxlength="2" placeholder="50" />%
+         </p>
+         <span class="separator bold"></span>
+         <h1>Tuning basic values</h1>
+         <h2>Anti-roll bars</h2>
+         <h3>Anti-roll bars</h3>
+         <p>
+            Min value:
+            <input name="antirollBarMin" type="number" min="1" max="99" size="2" maxlength="2" step="0.01" />
+         </p>
+         <p>
+            Max value:
+            <input name="antirollBarMax" type="number" min="1" max="99" size="2" maxlength="2" step="0.01" />
+         </p>
+         <span class="separator"></span>
+         <h2>Springs</h2>
+         <h3>Springs</h3>
+         <p>
+            Min value:
+            <input name="springsMin" type="number" min="1" max="9999" size="4" maxlength="4" step="0.1" />
+         </p>
+         <p>
+            Max value:
+            <input name="springsMax" type="number" min="1" max="9999" size="4" maxlength="4" step="0.1" />
+         </p>
+         <span class="separator"></span>
+         <h2>Damping</h2>
+         <h3>Rebound stiffness</h3>
+         <p>
+            Min value:
+            <input name="reboundStiffMin" type="number" min="1" max="99" size="2" maxlength="2" step="0.1" />
+         </p>
+         <p>
+            Max value:
+            <input name="reboundStiffMax" type="number" min="1" max="99" size="2" maxlength="2" step="0.1" />
+         </p>
+         <span class="separator"></span>
+         <button type="button">Calculate</button>
       </main>
       <aside>
-         <ul>
-            <li>
-               Differential
-               <ul>
-                  <li>
-                     Front
-                     <ul>
-                        <li>
-                           Acceleration: <span>25% -> 50% <span>(too high value causes understeer)</span></span>
-                        </li>
-                        <li>Deceleration: <span>0%</span></li>
-                     </ul>
-                  </li>
-                  <li>
-                     Rear
-                     <ul>
-                        <li>
-                           Acceleration: <span>40% -> 50% <span>(too high value causes oversteer)</span></span>
-                        </li>
-                        <li>Deceleration: <span>0%</span></li>
-                     </ul>
-                  </li>
-                  <li>
-                     Center
-                     <ul>
-                        <li>
-                           Balance: <span>70% -> 90% <span>(available when AWD)</span></span>
-                        </li>
-                     </ul>
-                  </li>
-               </ul>
-            </li>
-            <li>
-               Brake
-               <ul>
-                  <li>
-                     Breaking Force
-                     <ul>
-                        <li>
-                           Pressure: <span>100% <span>(higher values might be unstable)</span></span>
-                        </li>
-                     </ul>
-                  </li>
-               </ul>
-            </li>
-            <li>
-               Aero
-               <ul>
-                  <li>
-                     Downforce
-                     <ul>
-                        <li>Front: <span>75% cornering</span></li>
-                        <li>Rear: <span>Max cornering</span></li>
-                     </ul>
-                  </li>
-               </ul>
-            </li>
-            <li>
-               Damping
-               <ul>
-                  <li>
-                     Rebound stiffness
-                     <ul>
-                        <li>Front: <span id="reboundStiffFront"></span></li>
-                        <li>Rear: <span id="reboundStiffRear"></span></li>
-                     </ul>
-                  </li>
-                  <li>
-                     Bump stiffness
-                     <ul>
-                        <li>Front: <span id="bumpStiffFront"></span></li>
-                        <li>Rear: <span id="bumpStiffRear"></span></li>
-                     </ul>
-                  </li>
-               </ul>
-            </li>
-            <li>
-               Springs
-               <ul>
-                  <li>
-                     Springs
-                     <ul>
-                        <li>Front: <span id="springsFront"></span></li>
-                        <li>Rear: <span id="springsRear"></span></li>
-                     </ul>
-                  </li>
-                  <li>
-                     Ride height
-                     <ul>
-                        <li>Front: <span>1 tick from lowest value</span></li>
-                        <li>Rear: <span>1 tick from lowest value</span></li>
-                     </ul>
-                  </li>
-               </ul>
-            </li>
-            <li>
-               Anti-roll bars
-               <ul>
-                  <li>
-                     Anti-roll bars
-                     <ul>
-                        <li>Front: <span id="antirollBarFront"></span></li>
-                        <li>Rear: <span id="antirollBarRear"></span></li>
-                     </ul>
-                  </li>
-               </ul>
-            </li>
-         </ul>
+         <h1>Tuning values</h1>
+         <h2>Gearing</h2>
+         <h3>Forward gears</h3>
+         <p>Final drive: <span>Your gearing graph should look like this below:</span></p>
+         <img src="img/gearing.jpg" alt="Gearing graph" />
+         <span class="separator"></span>
+         <h2>Anti-roll bars</h2>
+         <h3>Anti-roll bars</h3>
+         <p>Front: <span id="antirollBarFront"></span></p>
+         <p>Rear: <span id="antirollBarRear"></span></p>
+         <span class="separator"></span>
+         <h2>Springs</h2>
+         <h3>Springs</h3>
+         <p>Front: <span id="springsFront"></span></p>
+         <p>Rear: <span id="springsRear"></span></p>
+         <h3>Ride height</h3>
+         <p>Front: <span>1 tick from lowest value</span></p>
+         <p>Rear: <span>1 tick from lowest value</span></p>
+         <span class="separator"></span>
+         <h2>Damping</h2>
+         <h3>Rebound stiffness</h3>
+         <p>Front: <span id="reboundStiffFront"></span></p>
+         <p>Rear: <span id="reboundStiffRear"></span></p>
+         <h3>Bump stiffness</h3>
+         <p>Front: <span id="bumpStiffFront"></span></p>
+         <p>Rear: <span id="bumpStiffRear"></span></p>
+         <span class="separator"></span>
+         <span class="aero">
+            <h2>Aero</h2>
+            <h3>Downforce</h3>
+            <p>Front: <span>75% cornering</span></p>
+            <p>Rear: <span>MAX cornering</span></p>
+            <span class="separator"></span>
+         </span>
+         <h2>Brake</h2>
+         <h3>Braking force</h3>
+         <p>
+            Pressure: <span>100% <span>(higher values might be unstable)</span></span>
+         </p>
+         <span class="separator"></span>
+         <h2>Differential</h2>
+         <span class="fwd">
+            <h3>Front</h3>
+            <p>
+               Acceleration: <span>25% -> 50% <span>(too high value causes understeer)</span></span>
+            </p>
+            <p>Deceleration: <span>0%</span></p>
+         </span>
+         <span class="rwd">
+            <h3>Rear</h3>
+            <p>
+               Acceleration: <span>40% -> 50% <span>(too high value causes oversteer)</span></span>
+            </p>
+            <p>Deceleration: <span>0%</span></p>
+         </span>
+         <span class="awd">
+            <h3>Center</h3>
+            <p>Balance: <span>70% -> 90%</span></p>
+         </span>
       </aside>
       <footer>&copy Xapixowy 2021</footer>
       <script src="js/script.js"></script>
