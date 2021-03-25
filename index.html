@@ -11,7 +11,10 @@
       <link rel="stylesheet" href="css/style.css" />
    </head>
    <body>
-      <header>HokiHoshi's Forza Calculator</header>
+      <header>
+         HokiHoshi's Forza Calculator
+         <button type="button" id="theme"><i class="ti ti-palette"></i></button>
+      </header>
       <main>
          <h1>Car information</h1>
          <span class="values">
@@ -27,6 +30,32 @@
             <p>
                Front weight:
                <input name="frontWeight" type="number" min="1" max="99" size="2" maxlength="2" placeholder="50" />%
+            </p>
+            <p>
+               Tuning:
+               <select name="tuning" disabled>
+                  <option value="street" selected>Street (default)</option>
+                  <option value="rally">Rally</option>
+                  <option value="drift">Drift</option>
+                  <option value="drag">Drag</option>
+               </select>
+            </p>
+            <p>
+               Gearing:
+               <select name="gearing" disabled>
+                  <option value="basic" selected>Basic</option>
+                  <option value="match">Match (depends on tuning)</option>
+               </select>
+            </p>
+            <p>
+               Season:
+               <select name="season" disabled>
+                  <option value="-" selected>-</option>
+                  <option value="spring">Spring</option>
+                  <option value="summer">Summer</option>
+                  <option value="autumn">Autumn</option>
+                  <option value="winter">Winter</option>
+               </select>
             </p>
          </span>
          <span class="separator bold"></span>
@@ -70,7 +99,7 @@
             </p>
          </span>
          <span class="separator"></span>
-         <button type="button">Calculate</button>
+         <button type="button" id="calculate">Calculate</button>
       </main>
       <aside>
          <h1>Tuning values</h1>

@@ -110,7 +110,15 @@ function emptyCheck(input) {
    else return false;
 }
 
-document.querySelector("button").addEventListener("click", function () {
+document.querySelector("button#theme").addEventListener("click", function () {
+   const buttonIcon = document.querySelector("button#theme>i");
+   elementFade(buttonIcon, "in");
+   setTimeout(function () {
+      elementFade(buttonIcon, "");
+   }, 1000);
+});
+
+document.querySelector("button#calculate").addEventListener("click", function () {
    if (
       emptyCheck(frontWeight) == true ||
       emptyCheck(reboundStiffMin) == true ||
