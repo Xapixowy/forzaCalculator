@@ -2,19 +2,21 @@ main, aside
    position: absolute
    top: $header-height
    left: 0
-   width: 50%
+   width: 100%
    height: calc(100vh - #{$header-height} - #{$footer-height})
    padding: 30px
+   text-align: center
+   transition: .5s
+   &.opened
+      width: 50%
    h1
       font-size: $font-size*2
       margin-bottom: 10px
    h2
       font-size: $font-size*1.7
-      margin-left: $margin-left
       margin-bottom: 10px
    h3
       font-size: $font-size*1.4
-      margin-left: $margin-left*2
    p
       margin: 5px 0
       &+h2, &+h1
@@ -28,22 +30,26 @@ main, aside
       width: 75%
       margin: 15px auto 0 auto
    p, img
-      margin-left: $margin-left*3
    button
       display: block
       margin: 0 auto
       padding: 10px 25px
    span.separator
       display: block
-      width: 75%
+      width: 100%
       border-bottom: 1px solid black
       margin: 25px 0
+      transition: .5s
+      &.opened
+         width: 75%
       &.bold
          width: 100%
          border-bottom-width: 3px
+   span.values
+      text-align: left
 aside
    left: 100%
-   transition: .5s
    overflow-y: scroll
+   border-left: 1px solid black
    &.opened
       left: 50%

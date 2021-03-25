@@ -1,3 +1,6 @@
+const aside = document.querySelector("aside");
+const main = document.querySelector("main");
+const separator = document.querySelector("span.separator");
 //Entry values
 const frontWeight = document.querySelector("input[name='frontWeight']");
 const reboundStiffMin = document.querySelector("input[name='reboundStiffMin']");
@@ -22,10 +25,14 @@ function formula(max, min, weight) {
    return result;
 }
 
-function asideFadeIn() {
-   const aside = document.querySelector("aside");
-   if (aside.classList.contains("opened") == false);
-   aside.classList.add("opened");
+function elementFade(element, option) {
+   if (option == "in") {
+      if (element.classList.contains("opened") == false);
+      element.classList.add("opened");
+   } else {
+      if (element.classList.contains("opened") == true);
+      element.classList.remove("opened");
+   }
 }
 
 function carInfoCheck() {
@@ -38,24 +45,24 @@ function carInfoCheck() {
    if (aeroInput.checked == false) aeroTab.innerHTML = "";
    else {
       aeroTab.innerHTML =
-         "<h2>Aero</h2><h3>Downforce</h3><p>Front: <span>75% cornering</span></p><p>Rear: <span>MAX cornering</span></p><span class='separator'></span>";
+         "<h2>Aero</h2><h3>Downforce</h3><span class='values'><p>Front: <span>75% cornering</span></p><p>Rear: <span>MAX cornering</span></p><span class='separator'></span></span>";
    }
    if (drivetrain.value == "fwd") {
       diffFwdTab.innerHTML =
-         "<h3>Front</h3><p>Acceleration: <span>25% -> 50% <span>(too high value causes understeer)</span></span></p><p>Deceleration: <span>0%</span></p>";
+         "<h3>Front</h3><span class='values'><p>Acceleration: <span>25% -> 50% <span>(too high value causes understeer)</span></span></p><p>Deceleration: <span>0%</span></p></span>";
       diffRwdTab.innerHTML = "";
       diffAwdTab.innerHTML = "";
    } else if (drivetrain.value == "rwd") {
       diffFwdTab.innerHTML = "";
       diffRwdTab.innerHTML =
-         "<h3>Rear</h3><p>Acceleration: <span>40% -> 50% <span>(too high value causes oversteer)</span></span></p><p>Deceleration: <span>0%</span></p>";
+         "<h3>Rear</h3><span class='values'><p>Acceleration: <span>40% -> 50% <span>(too high value causes oversteer)</span></span></p><p>Deceleration: <span>0%</span></p></span>";
       diffAwdTab.innerHTML = "";
    } else {
       diffFwdTab.innerHTML =
-         "<h3>Front</h3><p>Acceleration: <span>25% -> 50% <span>(too high value causes understeer)</span></span></p><p>Deceleration: <span>0%</span></p>";
+         "<h3>Front</h3><span class='values'><p>Acceleration: <span>25% -> 50% <span>(too high value causes understeer)</span></span></p><p>Deceleration: <span>0%</span></p></span>";
       diffRwdTab.innerHTML =
-         "<h3>Rear</h3><p>Acceleration: <span>40% -> 50% <span>(too high value causes oversteer)</span></span></p><p>Deceleration: <span>0%</span></p>";
-      diffAwdTab.innerHTML = "<h3>Center</h3><p>Balance: <span>70% -> 90%</span></p>";
+         "<h3>Rear</h3><span class='values'><p>Acceleration: <span>40% -> 50% <span>(too high value causes oversteer)</span></span></p><p>Deceleration: <span>0%</span></p></span>";
+      diffAwdTab.innerHTML = "<h3>Center</h3><span class='values'><p>Balance: <span>70% -> 90%</span></p></span>";
    }
 }
 
@@ -117,6 +124,13 @@ document.querySelector("button").addEventListener("click", function () {
    else {
       showValues();
       carInfoCheck();
-      asideFadeIn();
+      elementFade(aside, "in");
+      elementFade(separator, "in");
+      elementFade(main, "in");
    }
+});
+document.querySelector("header").addEventListener("click", function () {
+   elementFade(aside, "");
+   elementFade(separator, "");
+   elementFade(main, "");
 });
